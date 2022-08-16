@@ -99,7 +99,7 @@
 	.gitignore file
 
 ## How to Install and Run the Project:
-	SQL: Remote Docker database environment setup
+	SQL: Local database environment setup
 	 
 ## How to Use the Project:
 	IDE need to execute the java project
