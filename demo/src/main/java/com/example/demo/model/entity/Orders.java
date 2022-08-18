@@ -52,7 +52,7 @@ public class Orders extends BaseEntity {
         this.dateOrderCompleted = dateOrderCompleted;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "customer_id", nullable = false)
     public Customer getCustomer() {
         return customer;
@@ -62,7 +62,7 @@ public class Orders extends BaseEntity {
         this.customer = customer;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     public Set<Product> getProducts() {
         return products;
     }

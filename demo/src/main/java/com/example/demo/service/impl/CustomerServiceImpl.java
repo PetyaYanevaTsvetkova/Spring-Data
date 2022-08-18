@@ -1,5 +1,4 @@
 package com.example.demo.service.impl;
-
 import com.example.demo.constants.GlobalConstants;
 import com.example.demo.model.dto.CustomerSeedDTO;
 import com.example.demo.model.entity.Customer;
@@ -11,7 +10,6 @@ import com.example.demo.util.ValidationUtil;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,10 +48,14 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerSeedDTO[] customerSeedDTOS = gson
                 .fromJson(fileContent, CustomerSeedDTO[].class);
 
-//        List<Customer> customers = Arrays.stream(customerSeedDTOS)
-//                .filter(validationUtil::isValid)
-//                .map(customerSeedDTO -> modelMapper.map(customerSeedDTO, Customer.class))
-//                .collect(Collectors.toList());
+        List<Customer> customers = Arrays.stream(customerSeedDTOS)
+                .filter(validationUtil::isValid)
+                .map(customerSeedDTO -> {
+                    Customer customer = modelMapper.map(customerSeedDTO, Customer.class);
+                    customer.setAddress(addressService.findRandomAddress());
+                    return customer;
+                })
+                .collect(Collectors.toList());
 
 
         //mapping to POJOs, validate and save entities in Database:

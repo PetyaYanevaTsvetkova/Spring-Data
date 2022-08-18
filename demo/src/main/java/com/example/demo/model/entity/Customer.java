@@ -122,7 +122,7 @@ public class Customer extends BaseEntity {
         this.notes = notes;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "address_id")
     public Address getAddress() {
         return address;

@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import com.example.demo.service.AddressService;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.OrderService;
@@ -25,12 +26,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         seedData();
-
-
     }
 
-
-    
     private void seedData() throws IOException {
         addressService.seedAddressData();
         customerService.seedCustomersData();

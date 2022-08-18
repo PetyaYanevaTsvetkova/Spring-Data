@@ -50,7 +50,7 @@ public class Address extends BaseEntity {
         this.country = country;
     }
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address")
     public Set<Customer> getCustomers() {
         return customers;
     }
